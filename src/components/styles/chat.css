@@ -1,0 +1,155 @@
+.container2 {
+  padding: 0px 20px 0px 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers content2 horizontally */
+  height: 100vh; /* Full viewport height */
+}
+
+.iconlogo {
+  position: sticky;
+  z-index: 10;
+  top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0px 0 0 10px;
+}
+
+.iconlogo img {
+  width: 50px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.iconlogo p {
+  font-family: "Just Another Hand", cursive;
+  color: #e5e4cb;
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+/* Chat messages */
+.chat {
+  flex: 1;
+  overflow-y: auto; /* Cho phép cuộn dọc */
+  padding: 10px;
+  border-radius: 15px;
+}
+/* Ẩn thanh cuộn nhưng vẫn cho phép cuộn dọc */
+.chat::-webkit-scrollbar {
+  width: 0px; /* Ẩn thanh cuộn ngang */
+  background: transparent; /* Hoặc background-color: transparent; */
+}
+
+.chatAI,
+.chatUser {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.chatAI {
+  justify-content: flex-start;
+}
+
+.chatAIcontent {
+  background-color: #30034b;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 15px 15px 15px 0;
+  max-width: 70%;
+  border: 1px solid #250538;
+}
+
+.chatUser {
+  justify-content: flex-end;
+}
+
+.chatUsercontent {
+  background-color: #30034b;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 15px 15px 0 15px;
+  max-width: 70%;
+  border: 1px solid #250538;
+}
+
+.send {
+  position: relative;
+  margin-top: 20px;
+}
+
+.send input[type="text"] {
+  width: 830px;
+  padding: 10px 40px 10px 15px;
+  border-radius: 15px;
+  border: 0.3px solid #250538;
+  background-color: #30034b;
+}
+
+.send svg {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #e3dcb1;
+}
+
+.content2 {
+  width: 100%;
+  max-width: 900px;
+  font-family: "Comfortaa", sans-serif;
+  gap: 10px;
+  z-index: 10;
+  margin: 20px 0 0 0;
+  flex: 1;
+  overflow: hidden; /* Prevent scrolling issues */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers content inside content2 */
+}
+.content2 p.dk {
+  text-align: center;
+  color: #929292;
+  /* font-weight: 500;
+  /* font-size: 1rem;
+  line-height: 1.5; */ 
+}
+.content2 p.dk b {
+  color: #cdcdcd;
+}
+
+
+/* Bouncing text effect for each letter */
+.bounce {
+  display: inline-block; /* Allow the text to be animated */
+  color: white; /* Change this color to match your theme */
+  font-size: 18px; /* Adjust font size as needed */
+  animation: bounce 0.6s infinite alternate linear; /* Apply bounce animation */
+  animation-delay: calc(0.1s * var(--i)); /* Stagger the animation */
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0); /* Start at original position */
+  }
+  20% {
+    transform: translateY(-2px); /* Move up by 10 pixels */
+  }
+  40% {
+    transform: translateY(-4px); /* Move up by 10 pixels */
+  }
+  60% {
+    transform: translateY(-6px); /* Move up by 10 pixels */
+  }
+  80% {
+    transform: translateY(-8px); /* Move up by 10 pixels */
+  }
+  100% {
+    transform: translateY(-10px); /* Move up by 10 pixels */
+  }
+}

@@ -1,0 +1,33 @@
+
+
+.logo {
+    width: 100%;
+    height: 450px;
+}
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+a:hover {
+    color: rgba(196, 162, 222, 0.38);
+}
+.centered-content {
+    position: fixed;
+    top: 0; /* Đặt Stack ở đầu trang */
+    width: 100%; /* Để Stack bao phủ toàn bộ chiều rộng */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Nền trong suốt (50% đen) */
+    padding: 10px 0;
+    z-index: 1; /* Đảm bảo Stack nằm trên hình nền */
+}
+
+.centered-content .MuiPaper-root {
+    background-color: transparent; /* Đảm bảo item trong Stack có nền trong suốt */
+    box-shadow: none; /* Loại bỏ bóng đổ */
+    color: white; /* Đổi màu chữ để dễ đọc hơn trên nền trong suốt */
+    font-size: 1.25rem; /* Tăng kích thước chữ */
+    font-weight: bold; /* Chữ in đậm */
+}
