@@ -1,18 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   signInWithPopup,
   GoogleAuthProvider,
-  GithubAuthProvider,
+  onAuthStateChanged,
 } from "firebase/auth";
-import { auth } from "./firebase";
+import { auth, db } from "./firebase";
 import "./styles/login.css";
 import { useNavigate } from "react-router-dom";
+import { setDoc, doc } from "firebase/firestore";
 
-const Login = () => {
+export const useGoogleLogin = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+    return () => unsubscribe();
+  }, []);
+
   const handleLogin = (user) => {
     setUser(user);
+    sessionStorage.setItem("user", JSON.stringify(user));
+    navigate("/card");
   };
 
   const handleGoogleLogin = async () => {
@@ -20,49 +31,22 @@ const Login = () => {
     try {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
-      handleLogin(user);
-      sessionStorage.setItem("user", JSON.stringify(user));
-      navigate("/card");
+      await setDoc(doc(db, "users", user.uid), {
+        displayName: user.displayName,
+        email: user.email,
+        photoURL: user.photoURL,
+        dateOfBirth: user.dateOfBirth,
+        weeklyEmails: user.weeklyEmails,
+        // Add any other user data you want to save
+      });
+
+      handleLogin(auth.currentUser);
     } catch (error) {
       console.error("Error during Google sign in: ", error);
     }
   };
 
-  const handleGithubLogin = async () => {
-    const provider = new GithubAuthProvider();
-    try {
-      const result = await signInWithPopup(auth, provider);
-      const user = result.user;
-      handleLogin(user);
-      sessionStorage.setItem("user", JSON.stringify(user));
-      navigate("/card");
-    } catch (error) {
-      console.error("Error during Github sign in: ", error);
-    }
-  };
-
-  return (
-    <div className="login-container">
-      <br />
-      <br />
-      <br />
-      <button className="google-sign-in" onClick={handleGoogleLogin}>
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/640px-Google_%22G%22_logo.svg.png"
-          alt="Google logo"
-        />
-        Sign in with Google
-      </button>
-      <span>OR</span>
-      <button className="github-sign-in" onClick={handleGithubLogin}>
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Github_logo_svg.svg/640px-Github_logo_svg.svg.png"
-          alt="Github logo"
-        />
-        Sign in with Github
-      </button>
-    </div>
-  );
+  return { handleGoogleLogin, user }; // Return the function to be used
 };
 
-export default Login;
+export default useGoogleLogin;

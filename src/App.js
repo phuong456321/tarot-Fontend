@@ -4,8 +4,7 @@ import "./App.css";
 import Detailtarot from "./components/detailtarot";
 import Cards from "./components/cards";
 import Chat from "./components/chat";
-import Login from "./components/Login";
-
+import Profile from "./components/profile";
 
 function App() {
   return (
@@ -15,7 +14,7 @@ function App() {
           <Route path="/" element={<Chat />} />
           <Route path="/card" element={<Cards />} />
           <Route path="/card/detail/:name_short" element={<Detailtarot />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<Profile />} />
           {/* Bạn có thể thêm các route khác ở đây */}
         </Routes>
       </div>

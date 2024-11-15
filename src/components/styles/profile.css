@@ -1,0 +1,92 @@
+.profile-container {
+  margin-top: 0 !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+}
+
+.profile-mb-3 label {
+  font-family: "Comfortaa";
+  font-size: 1.5rem;
+  color: #000;
+  font-weight: 500;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  margin: 20px 0 0 0;
+}
+.profile-container img {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+}
+.profile-container form {
+  width: 50%;
+}
+.profile-mb-3 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.profile-mb-3 input {
+  font-family: "Comfortaa";
+  font-size: 1.5rem;
+  display: block;
+  inline-size: 100%;
+  margin-block: 0px;
+  padding: 12px;
+  box-sizing: border-box;
+  color: aliceblue;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid #000;
+}
+
+.profile-mb-3 select {
+  font-family: "Comfortaa";
+  font-size: 1.5rem;
+  display: block;
+  margin-block: 0px;
+  background-color: rgba(0, 0, 0, 0.2);
+  inline-size: 100%;
+  padding: 12px 48px 12px 12px;
+  color: aliceblue;
+  border: 1px solid #000;
+}
+
+.profile-d-flex {
+  display: flex;
+}
+
+.profile-button-container {
+  align-items: center;
+}
+
+.profile-form-check {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-form-check label {
+  margin: 0;
+  width: 100%;
+  text-wrap: nowrap;
+  margin-left: 15px;
+}
+
+.profile-form-check-input {
+  height: 20px;
+}
+.profile-form-check input {
+  width: 20px;
+}
+.profile-button-container button {
+  margin: 10px 0;
+  padding: 15px 20px;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
